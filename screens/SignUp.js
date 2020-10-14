@@ -1,8 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
 
-export default () => (
-  <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-    <Text>가입하기</Text>
-  </View>
-);
+function SignUp() {
+  return (
+    <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
+      <Text>가입하기</Text>
+    </View>
+  );
+}
+
+export default SignUp;
