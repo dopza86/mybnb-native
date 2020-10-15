@@ -1,12 +1,12 @@
 import React from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 import styled from "styled-components/native";
-import { Ionicons } from "@expo/vector-icons";
 
+const isAndroid = Platform.OS === "android";
 const Container = styled.View`
   padding-left: 20px;
 `;
-const isAndroid = Platform.OS === "android";
 
 export default () => (
   <Container>
