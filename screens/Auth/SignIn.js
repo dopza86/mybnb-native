@@ -7,18 +7,19 @@ import Input from "../../components/Auth/Input";
 const Container = styled.View`
   flex: 1;
   justify-content: center;
+  align-items: center;
 `;
 const TextInput = styled.TextInput``;
 
-export default () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+export default ({ route: { params } }) => {
+  const [username, setUsername] = useState(params?.email);
+  const [password, setPassword] = useState(params?.password);
   const handleSubmit = () => alert(`${username} ${password}`);
   return (
     <Container>
       <Input
         value={username}
-        placeholder="아이디"
+        placeholder="이메일"
         autoCapitalize="none"
         onChangeText={(text) => setUsername(text)}
         stateFn={setUsername}

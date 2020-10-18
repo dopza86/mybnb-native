@@ -15,6 +15,7 @@
     "@react-navigation/stack": "^5.9.3",
     "@reduxjs/toolkit": "^1.4.0",
     "add": "^2.0.6",
+    "axios": "^0.20.0",
     "expo": "~39.0.2",
     "expo-asset": "~8.2.0",
     "expo-blur": "~8.2.0",
