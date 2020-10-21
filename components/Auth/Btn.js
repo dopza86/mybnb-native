@@ -32,7 +32,7 @@ const Btn = ({ onPress, text, accent = false }) => (
 Btn.propTypes = {
   onPress: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
-  accent: PropTypes.bool.isRequired,
+  accent: PropTypes.bool,
 };
 
 export default Btn;

@@ -1,22 +1,27 @@
 import React from "react";
-import { Dimensions } from "react-native";
+import { TouchableOpacity, Dimensions } from "react-native";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
-
 const { width } = Dimensions.get("screen");
-
 const Container = styled.TextInput`
-  width: ${width / 2}px;
+  width: ${width / 1.5}px;
+  padding: 12.5px 20px;
+  border: 1px solid grey;
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  font-weight: 500;
 `;
-
 const Input = ({
   value,
   placeholder,
   isPassword = false,
   autoCapitalize,
   stateFn,
+  keyboardType,
 }) => (
   <Container
+    keyboardType={keyboardType}
     value={value}
     placeholder={placeholder}
     secureTextEntry={isPassword ? true : false}
@@ -24,7 +29,6 @@ const Input = ({
     onChangeText={(text) => stateFn(text)}
   />
 );
-
 Input.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
@@ -32,5 +36,4 @@ Input.propTypes = {
   autoCapitalize: PropTypes.string,
   stateFn: PropTypes.func.isRequired,
 };
-
 export default Input;
