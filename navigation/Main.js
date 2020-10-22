@@ -1,9 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Expolore from "../screens/Auth/Main/Expolore";
-import MapScreen from "../screens/Auth/Main/Map";
-import Profile from "../screens/Auth/Main/Profile";
-import Saved from "../screens/Auth/Main/Saved";
+import Expolore from "../screens/Main/Explore";
+import MapScreen from "../screens/Main/Map";
+import Profile from "../screens/Main/Profile";
+import Saved from "../screens/Main/Saved";
 import colors from "../colors";
 import utils from "../utils";
 import { Ionicons } from "@expo/vector-icons";

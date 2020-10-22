@@ -22,15 +22,8 @@ const { setExploreRooms } = roomsSlice.actions;
 
 export const getRooms = () => async (dispatch) => {
   try {
-    const {
-      data: { results },
-    } = await api.rooms();
-    dispatch(
-      setExploreRooms({
-        rooms: results,
-        page: 1,
-      })
-    );
+    const { data } = await api.rooms();
+    console.log(data);
   } catch (e) {}
 };
 

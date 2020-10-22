@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import rootReducer from "./rootReducer";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const persistConfig = {
   key: "root",
@@ -21,6 +22,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
+
   middleware: getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
