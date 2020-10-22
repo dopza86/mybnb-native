@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import api from "../../../api";
 import utils from "../../../utils";
+import api from "../../../api";
 import SignUpPresenter from "./SignUpPresenter";
 
 export default ({ navigation: { navigate } }) => {
-  const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
   const isFormValid = () => {
     if (
       firstName === "" ||
@@ -17,16 +16,15 @@ export default ({ navigation: { navigate } }) => {
       email === "" ||
       password === ""
     ) {
-      alert("모든 항목을 작성해주세요");
+      alert("All fields are required.");
       return false;
     }
     if (!utils.isEmail(email)) {
-      alert("이메일 형식이 유효하지 않습니다");
+      alert("Please add a valid email.");
       return false;
     }
     return true;
   };
-
   const handleSubmit = async () => {
     if (!isFormValid()) {
       return;
@@ -41,26 +39,28 @@ export default ({ navigation: { navigate } }) => {
         password,
       });
       if (status === 201) {
-        alert("가입완료 되었습니다 , 로그인 해주세요!");
+        alert("Account created. Sign in, please.");
         navigate("SignIn", { email, password });
       }
     } catch (e) {
-      alert("이미 가입된 회원입니다");
       console.warn(e);
+      alert("The email is taken");
+    } finally {
+      setLoading(false);
     }
   };
-
   return (
-    <SignUpPresenterlastName
+    <SignUpPresenter
       firstName={firstName}
-      email={email}
-      password={password}
-      loading={loading}
-      setLastName={setLastName}
       setFirstName={setFirstName}
+      lastName={lastName}
+      setLastName={setLastName}
+      email={email}
       setEmail={setEmail}
+      password={password}
       setPassword={setPassword}
-      setLoading={setLoading}
+      loading={loading}
+      handleSubmit={handleSubmit}
     />
   );
 };

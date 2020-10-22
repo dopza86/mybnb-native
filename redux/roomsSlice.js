@@ -1,22 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
+import api from "../api";
 
-const roomSlice = createSlice({
+const roomsSlice = createSlice({
   name: "rooms",
   initialState: {
-    expolore: {
+    explore: {
       page: 1,
       rooms: [],
     },
-    page: 1,
     favs: [],
   },
   reducers: {
-    setExpoloreRooms(state, action) {
-      state.expolore.rooms.push(action.payload.rooms);
-      state.expolore.page = action.payload.page;
+    setExploreRooms(state, action) {
+      state.explore.rooms.push(action.payload.rooms);
+      state.explore.page = action.payload.page;
     },
   },
 });
 
-const { setExpoloreRooms } = roomSlice.actions;
-export default roomSlice.reducer;
+const { setExploreRooms } = roomsSlice.actions;
+
+export const getRooms = () => async (dispatch) => {
+  try {
+    const {
+      data: { results },
+    } = await api.rooms();
+    dispatch(
+      setExploreRooms({
+        rooms: results,
+        page: 1,
+      })
+    );
+  } catch (e) {}
+};
+
+export default roomsSlice.reducer;

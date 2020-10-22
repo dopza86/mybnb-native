@@ -18,7 +18,18 @@ const InputContainer = styled.View`
   margin-bottom: 30px;
 `;
 
-export default ({ navigation: { navigate } }) => {
+export default ({
+  firstName,
+  setFirstName,
+  lastName,
+  setLastName,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  loading,
+  handleSubmit,
+}) => {
   return (
     <DismissKeyboard>
       <Container>
