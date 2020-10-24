@@ -6,19 +6,21 @@ import SignInPresenter from "./SignInPresenter";
 
 export default ({ route: { params } }) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState(params?.email);
-  const [password, setPassword] = useState(params?.password);
+  const [email, setEmail] = useState(params?.email || "dopza@gmail.com");
+  const [password, setPassword] = useState(params?.password || "1234");
+
   const isFormValid = () => {
     if (email === "" || password === "") {
-      alert("모든 항목을 작성해주세요");
+      alert("이메일과 비밀번호를 입력해주세요");
       return false;
     }
     if (!utils.isEmail(email)) {
-      alert("이메일 형식이 유효하지 않습니다");
+      alert("이메일 형식이 옳바르지 않습니다");
       return false;
     }
     return true;
   };
+
   const handleSubmit = () => {
     if (!isFormValid()) {
       return;
@@ -30,6 +32,7 @@ export default ({ route: { params } }) => {
       })
     );
   };
+
   return (
     <SignInPresenter
       email={email}

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ExplorePresenter from "./ExplorePresenter";
 
-export default (props) => {
-  console.log(props);
-  return <ExplorePresenter />;
+export default ({ getRooms, rooms, page }) => {
+  useEffect(() => {
+    getRooms();
+  }, []);
+  return <ExplorePresenter rooms={rooms} />;
 };

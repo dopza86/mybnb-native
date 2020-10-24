@@ -30,11 +30,8 @@ export const userLogin = (form) => async (dispatch) => {
     }
   } catch (e) {
     console.log(e);
-    alert("잘못된 이메일 또는 비밀번호 입니다");
+    alert("가입된 회원이 아닙니다");
   }
 };
-// function userLogin(form){
-//   return function(dispacth)
-// }
 
 export default userSlice.reducer;
