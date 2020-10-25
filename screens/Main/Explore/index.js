@@ -9,7 +9,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return state.roomsReducer.explore;
+  return {
+    rooms: state.roomsReducer.explore.rooms,
+    page: state.roomsReducer.explore.page,
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExploreContainer);

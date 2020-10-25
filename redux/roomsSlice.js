@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../api";
+
 const roomsSlice = createSlice({
   name: "rooms",
   initialState: {
@@ -14,18 +15,20 @@ const roomsSlice = createSlice({
       const { explore } = state;
       const { payload } = action;
       payload.rooms.forEach((payloadRoom) => {
-        const exists = explore.rooms.find(
-          (savedRoom) => savedRoom.id === payloadRoom.id
+        const exist = explore.rooms.find(
+          (exploreRoom) => exploreRoom.id === payloadRoom.id
         );
-        if (!exists) {
+        if (!exist) {
           explore.rooms.push(payloadRoom);
         }
       });
-      state.explore.page = payload.page;
+      state.explore.page = action.payload.page;
     },
   },
 });
+
 const { setExploreRooms } = roomsSlice.actions;
+
 export const getRooms = () => async (dispatch) => {
   try {
     const {
@@ -39,4 +42,5 @@ export const getRooms = () => async (dispatch) => {
     );
   } catch (e) {}
 };
+
 export default roomsSlice.reducer;
