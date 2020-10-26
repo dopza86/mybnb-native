@@ -11,45 +11,40 @@ const Container = styled.View`
   margin-bottom: 25px;
   align-items: flex-start;
 `;
-
 const Name = styled.Text`
   font-size: 18px;
   font-weight: 300;
   margin-bottom: 7px;
 `;
-
-const Superhost = styled.View`
+const SuperhostContainer = styled.View`
   padding: 3px 5px;
   border: 1px solid black;
   border-radius: 4px;
   margin-bottom: 5px;
 `;
-
 const SuperhostText = styled.Text`
   font-weight: 500;
   font-size: 12px;
 `;
-
 const PriceContainer = styled.View`
   flex-direction: row;
 `;
-
-const PriceText = styled.Text`
-  font-size: 16px;
-`;
-
 const PriceNumber = styled.Text`
   font-weight: 600;
+  font-size: 16px;
+`;
+const PriceText = styled.Text`
   font-size: 16px;
 `;
 
 const PhotosContainer = styled.View`
   margin-bottom: 10px;
-  overflow:hidden;
-  width:100%
+  width: 100%;
+  overflow: hidden;
   height: ${height / 4}px;
- 
 `;
+
+const FakeBar = styled.View``;
 
 const SlideImage = styled.Image`
   width:100%
@@ -60,12 +55,9 @@ const RoomCard = ({ id, isFav, isSuperHost, photos, name, price }) => (
   <Container>
     <PhotosContainer>
       {photos.length === 0 ? (
-        <SlideImage
-          resizeMode="repeat"
-          source={require("../assets/roomDefault.jpg")}
-        />
+        <SlideImage source={require("../assets/roomDefault.jpg")} />
       ) : (
-        <Swiper>
+        <Swiper paginationStyle={{ marginBottom: -15 }}>
           {photos.map((photo) => (
             <SlideImage key={photo.id} source={{ uri: photo.file }} />
           ))}
@@ -73,9 +65,9 @@ const RoomCard = ({ id, isFav, isSuperHost, photos, name, price }) => (
       )}
     </PhotosContainer>
     {isSuperHost ? (
-      <Superhost>
+      <SuperhostContainer>
         <SuperhostText>슈퍼호스트</SuperhostText>
-      </Superhost>
+      </SuperhostContainer>
     ) : null}
     <Name>{name}</Name>
     <PriceContainer>
@@ -85,7 +77,7 @@ const RoomCard = ({ id, isFav, isSuperHost, photos, name, price }) => (
   </Container>
 );
 
-RoomCard.propTypes = {
+RoomCard.prototype = {
   id: Pt.number.isRequired,
   isFav: Pt.bool.isRequired,
   isSuperHost: Pt.bool.isRequired,
