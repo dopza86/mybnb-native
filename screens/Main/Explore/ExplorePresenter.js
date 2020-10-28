@@ -27,7 +27,22 @@ const FakeText = styled.Text`
   font-weight: 300;
 `;
 
-export default ({ rooms }) => {
+const LoadMore = styled.View`
+  width: 100%;
+  padding: 10px 10px;
+  align-items: center;
+  background-color: #006a70;
+  border-radius: 5px;
+  margin-bottom: 30px;
+`;
+
+const LoadMoreText = styled.Text`
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+`;
+
+export default ({ rooms, increasePage }) => {
   return (
     <Container>
       {rooms.length === 0 ? (
@@ -52,8 +67,10 @@ export default ({ rooms }) => {
                 price={room.price}
               />
             ))}
-            <TouchableOpacity>
-              <Text>더보기</Text>
+            <TouchableOpacity onPress={increasePage}>
+              <LoadMore>
+                <LoadMoreText>더보기</LoadMoreText>
+              </LoadMore>
             </TouchableOpacity>
           </ScrollView>
         </>

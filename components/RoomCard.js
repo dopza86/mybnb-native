@@ -44,8 +44,6 @@ const PhotosContainer = styled.View`
   height: ${height / 4}px;
 `;
 
-const FakeBar = styled.View``;
-
 const SlideImage = styled.Image`
   width:100%
   height:100%
