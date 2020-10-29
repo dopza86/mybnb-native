@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import utils from "../utils";
 import colors from "../colors";
 import { useDispatch } from "react-redux";
-import { toggleFavs } from "../redux/usersSlice";
+import { toggleFav } from "../redux/usersSlice";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -82,11 +82,11 @@ const RoomCard = ({ id, isFav, isSuperHost, photos, name, price }) => {
   const dispatch = useDispatch();
   return (
     <Container>
-      <TOpacity onPress={() => dispatch(toggleFavs(id))}>
+      <TOpacity onPress={() => dispatch(toggleFav(id))}>
         <Favbutton1>
           <Ionicons
             size={30}
-            color={"white"}
+            color={isFav ? colors.red : "white"}
             name={utils.isAndroid() ? "md-heart" : "ios-heart"}
           />
         </Favbutton1>
@@ -94,7 +94,7 @@ const RoomCard = ({ id, isFav, isSuperHost, photos, name, price }) => {
         <Favbutton>
           <Ionicons
             size={25}
-            color={"black"}
+            color={isFav ? colors.red : "black"}
             name={utils.isAndroid() ? "md-heart" : "ios-heart"}
           />
         </Favbutton>
