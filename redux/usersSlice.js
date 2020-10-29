@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../api";
-import { setFavs } from "./roomsSlice";
+import { setFav, setFavs } from "./roomsSlice";
 
 const userSlice = createSlice({
   name: "users",
@@ -31,18 +31,17 @@ export const userLogin = (form) => async (dispatch) => {
       dispatch(logIn({ token, id }));
     }
   } catch (e) {
-    console.log(e);
     alert("가입된 회원이 아닙니다");
   }
 };
 
 export const getFavs = () => async (dispatch, getState) => {
   const {
-    usersReducer: { id },
+    usersReducer: { id, token },
   } = getState();
 
   try {
-    const { data } = await api.favs(id);
+    const { data } = await api.favs(id, token);
     dispatch(setFavs(data));
   } catch (e) {
     console.warn(e);
@@ -53,9 +52,9 @@ export const toggleFav = (roomId) => async (dispatch, getState) => {
   const {
     usersReducer: { id, token },
   } = getState();
-
+  dispatch(setFav({ roomId }));
   try {
-    const { status } = await api.toggleFavs(id, roomId, token);
+    await api.toggleFavs(id, roomId, token);
   } catch (e) {
     console.warn(e);
   }

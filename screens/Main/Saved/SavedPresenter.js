@@ -18,8 +18,7 @@ const NoFavs = styled.Text``;
 
 export default ({ rooms }) => (
   <Container>
-    <Title>관심목록</Title>
-
+    <Title>관심목록 ({rooms.length})</Title>
     <SV
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ paddingBottom: 50 }}
@@ -34,10 +33,11 @@ export default ({ rooms }) => (
             id={room.id}
             isFav={room.is_fav}
             isSuperHost={room.user.superhost}
+            roomObj={room}
           />
         ))
       ) : (
-        <NoFavs>즐겨찾기 목록이 없습니다</NoFavs>
+        <NoFavs>관심목록이 없습니다</NoFavs>
       )}
     </SV>
   </Container>

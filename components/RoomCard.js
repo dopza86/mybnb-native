@@ -64,6 +64,7 @@ const Favbutton1 = styled.View`
 
 const Favbutton = styled.View`
   position: absolute;
+  margin-bottom:1px
   width: 50px;
   height: 50px;
   border-radius: 25px;
@@ -78,6 +79,21 @@ const TOpacity = styled.TouchableOpacity`
   top: 10px;
 `;
 
+function getIconName(isFav) {
+  const isAndroid = utils.isAndroid();
+  if (isAndroid) {
+    if (isFav) {
+      return "md-heart-empty";
+    }
+    return "md-heart";
+  } else {
+    if (isFav) {
+      return "ios-heart-empty";
+    }
+    return "ios-heart";
+  }
+}
+
 const RoomCard = ({ id, isFav, isSuperHost, photos, name, price }) => {
   const dispatch = useDispatch();
   return (
@@ -86,16 +102,16 @@ const RoomCard = ({ id, isFav, isSuperHost, photos, name, price }) => {
         <Favbutton1>
           <Ionicons
             size={30}
-            color={isFav ? colors.red : "white"}
-            name={utils.isAndroid() ? "md-heart" : "ios-heart"}
+            color={isFav ? "red" : "white"}
+            name={getIconName(isFav)}
           />
         </Favbutton1>
 
         <Favbutton>
           <Ionicons
-            size={25}
-            color={isFav ? colors.red : "black"}
-            name={utils.isAndroid() ? "md-heart" : "ios-heart"}
+            size={isFav ? 22 : 25}
+            color={"black"}
+            name={isFav ? null : getIconName(isFav)}
           />
         </Favbutton>
       </TOpacity>
