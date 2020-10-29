@@ -34,4 +34,23 @@ export const userLogin = (form) => async (dispatch) => {
   }
 };
 
+export const getFavs = () => async (dispatch, getState) => {
+  const {
+    usersReducer: { id },
+  } = getState();
+  try {
+    const { data } = await api.favs(id);
+    console.log(data);
+  } catch (e) {
+    console.warn(e);
+  }
+};
+
+export const toggleFavs = (roomId) => async (dispatch, getState) => {
+  const {
+    usersReducer: { id, token },
+  } = getState();
+  console.log(roomId, id, token);
+};
+
 export default userSlice.reducer;
