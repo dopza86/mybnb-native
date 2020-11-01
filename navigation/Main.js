@@ -9,6 +9,9 @@ import colors from "../colors";
 import utils from "../utils";
 import { Ionicons } from "@expo/vector-icons";
 import Room from "../screens/Main/Room";
+import BackBtn from "../components/Auth/BackBtn";
+import { BlurView } from "expo-blur";
+import { StyleSheet } from "react-native";
 
 const TabsNavigator = createBottomTabNavigator();
 
@@ -54,12 +57,30 @@ const Tabs = () => (
 const MainNavigator = createStackNavigator();
 
 export default () => (
-  <MainNavigator.Navigator screenOptions={{ headerBackTitleVisible: false }}>
+  <MainNavigator.Navigator
+    screenOptions={{
+      headerBackTitleVisible: false,
+      headerBackImage: () => <BackBtn />,
+    }}
+  >
     <MainNavigator.Screen
       name="Tabs"
       component={Tabs}
       options={{ headerShown: false }}
     />
-    <MainNavigator.Screen name="객실보기" component={Room} />
+    <MainNavigator.Screen
+      name="객실보기"
+      component={Room}
+      options={{
+        headerTransparent: true,
+        headerBackground: () => (
+          <BlurView
+            intensity={100}
+            tint="light"
+            style={StyleSheet.absoluteFill}
+          />
+        ),
+      }}
+    />
   </MainNavigator.Navigator>
 );
