@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import colors from "../../colors";
 import RoomPhotos from "../../components/RoomPhotos";
 import utils from "../../utils";
+import MapView, { Marker } from "react-native-maps";
 
 const Container = styled.ScrollView``;
 const Address = styled.Text`
@@ -40,12 +41,18 @@ const CheckTitleContainer = styled.View`
 `;
 
 const CheckTitle = styled.Text`
-  font-size: 18px;
+  font-size: 15px;
   margin-left: 15px;
 `;
 
 const CheckTime = styled.Text`
   margin-top: 10px;
+`;
+
+const MapContainer = styled.View`
+  width: 100%;
+  height: 200px;
+  margin: 30px 0px;
 `;
 
 function formatTime(time) {
@@ -61,11 +68,14 @@ export default ({ route: { params }, navigation }) => {
   useEffect(() => {
     navigation.setOptions({ title: params.name });
   }, []);
+  console.log(params);
   return (
     <Container>
       <RoomPhotos photos={params.photos} factor={2} />
       <DataContainer>
-        <Address>{params.address}</Address>
+        <Address>
+          {params.address} / ${params.price}
+        </Address>
         <PropertyInfoContainer>
           <PropertyInfoData>
             <PropertyInfoText>침대 {params.beds}</PropertyInfoText>
@@ -84,10 +94,38 @@ export default ({ route: { params }, navigation }) => {
               size={24}
             />
             <CheckTitle>체크인: {formatTime(params.check_in)}</CheckTitle>
-            <CheckTitle>/</CheckTitle>
+          </CheckTitleContainer>
+          <CheckTitleContainer>
+            <Ionicons
+              name={utils.isAndroid() ? "md-timer" : "ios-timer"}
+              size={24}
+            />
             <CheckTitle>체크아웃: {formatTime(params.check_out)}</CheckTitle>
           </CheckTitleContainer>
         </CheckContainer>
+        <MapContainer>
+          <MapView
+            camera={{
+              center: {
+                latitude: parseFloat(params.lat),
+                longitude: parseFloat(params.lng),
+              },
+              pitch: 25,
+              heading: 0,
+              altitude: 10 * 200,
+              zoom: 16,
+            }}
+            zoomEnabled={true}
+            style={{ height: "100%", width: "100%" }}
+          >
+            <Marker
+              coordinate={{
+                longitude: parseFloat(params.lng),
+                latitude: parseFloat(params.lat),
+              }}
+            />
+          </MapView>
+        </MapContainer>
       </DataContainer>
     </Container>
   );
