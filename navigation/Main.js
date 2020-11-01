@@ -1,5 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import Expolore from "../screens/Main/Explore";
 import MapScreen from "../screens/Main/Map";
 import Profile from "../screens/Main/Profile";
@@ -7,11 +8,12 @@ import Saved from "../screens/Main/Saved";
 import colors from "../colors";
 import utils from "../utils";
 import { Ionicons } from "@expo/vector-icons";
+import Room from "../screens/Main/Room";
 
-const Main = createBottomTabNavigator();
+const TabsNavigator = createBottomTabNavigator();
 
-export default () => (
-  <Main.Navigator
+const Tabs = () => (
+  <TabsNavigator.Navigator
     tabBarOptions={{
       activeTintColor: colors.red,
       tabStyle: {
@@ -42,9 +44,22 @@ export default () => (
       },
     })}
   >
-    <Main.Screen name="검색" component={Expolore}></Main.Screen>
-    <Main.Screen name="관심목록" component={Saved}></Main.Screen>
-    <Main.Screen name="지도" component={MapScreen}></Main.Screen>
-    <Main.Screen name="프로필" component={Profile}></Main.Screen>
-  </Main.Navigator>
+    <TabsNavigator.Screen name="검색" component={Expolore} />
+    <TabsNavigator.Screen name="관심목록" component={Saved} />
+    <TabsNavigator.Screen name="지도" component={MapScreen} />
+    <TabsNavigator.Screen name="프로필" component={Profile} />
+  </TabsNavigator.Navigator>
+);
+
+const MainNavigator = createStackNavigator();
+
+export default () => (
+  <MainNavigator.Navigator screenOptions={{ headerBackTitleVisible: false }}>
+    <MainNavigator.Screen
+      name="Tabs"
+      component={Tabs}
+      options={{ headerShown: false }}
+    />
+    <MainNavigator.Screen name="객실보기" component={Room} />
+  </MainNavigator.Navigator>
 );

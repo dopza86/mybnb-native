@@ -8,6 +8,7 @@ import utils from "../utils";
 import colors from "../colors";
 import { useDispatch } from "react-redux";
 import { toggleFav } from "../redux/usersSlice";
+import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -96,57 +97,61 @@ function getIconName(isFav) {
 
 const RoomCard = ({ id, isFav, isSuperHost, photos, name, price }) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+  console.log(navigation);
   return (
-    <Container>
-      <TOpacity onPress={() => dispatch(toggleFav(id))}>
-        <Favbutton1>
-          <Ionicons
-            size={30}
-            color={isFav ? "red" : "white"}
-            name={getIconName(isFav)}
-          />
-        </Favbutton1>
+    <TouchableOpacity onPress={() => navigation.navigate("객실보기")}>
+      <Container>
+        <TOpacity onPress={() => dispatch(toggleFav(id))}>
+          <Favbutton1>
+            <Ionicons
+              size={30}
+              color={isFav ? "red" : "white"}
+              name={getIconName(isFav)}
+            />
+          </Favbutton1>
 
-        <Favbutton>
-          <Ionicons
-            size={isFav ? 22 : 25}
-            color={"black"}
-            name={isFav ? null : getIconName(isFav)}
-          />
-        </Favbutton>
-      </TOpacity>
-      <PhotosContainer>
-        {photos.length === 0 ? (
-          <SlideImage source={require("../assets/roomDefault.jpg")} />
-        ) : (
-          <Swiper
-            controlsProps={{
-              PrevComponent: () => null,
-              NextComponent: () => null,
-            }}
-          >
-            {photos.map((photo) => (
-              <SlideImage
-                key={photo.id}
-                source={{
-                  uri: photo.file,
-                }}
-              />
-            ))}
-          </Swiper>
-        )}
-      </PhotosContainer>
-      {isSuperHost ? (
-        <SuperhostContainer>
-          <SuperhostText>슈퍼호스트</SuperhostText>
-        </SuperhostContainer>
-      ) : null}
-      <Name>{name}</Name>
-      <PriceContainer>
-        <PriceNumber>${price}</PriceNumber>
-        <PriceText>/일</PriceText>
-      </PriceContainer>
-    </Container>
+          <Favbutton>
+            <Ionicons
+              size={isFav ? 22 : 25}
+              color={"black"}
+              name={isFav ? null : getIconName(isFav)}
+            />
+          </Favbutton>
+        </TOpacity>
+        <PhotosContainer>
+          {photos.length === 0 ? (
+            <SlideImage source={require("../assets/roomDefault.jpg")} />
+          ) : (
+            <Swiper
+              controlsProps={{
+                PrevComponent: () => null,
+                NextComponent: () => null,
+              }}
+            >
+              {photos.map((photo) => (
+                <SlideImage
+                  key={photo.id}
+                  source={{
+                    uri: photo.file,
+                  }}
+                />
+              ))}
+            </Swiper>
+          )}
+        </PhotosContainer>
+        {isSuperHost ? (
+          <SuperhostContainer>
+            <SuperhostText>슈퍼호스트</SuperhostText>
+          </SuperhostContainer>
+        ) : null}
+        <Name>{name}</Name>
+        <PriceContainer>
+          <PriceNumber>${price}</PriceNumber>
+          <PriceText>/일</PriceText>
+        </PriceContainer>
+      </Container>
+    </TouchableOpacity>
   );
 };
 
