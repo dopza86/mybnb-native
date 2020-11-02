@@ -1,14 +1,17 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import Expolore from "../screens/Main/Explore";
+import { Ionicons } from "@expo/vector-icons";
+import Explore from "../screens/Main/Explore";
+import Saved from "../screens/Main/Saved";
 import MapScreen from "../screens/Main/Map";
 import Profile from "../screens/Main/Profile";
-import Saved from "../screens/Main/Saved";
 import colors from "../colors";
 import utils from "../utils";
-import { Ionicons } from "@expo/vector-icons";
+import BackBtn from "../components/Auth/BackBtn";
 import Room from "../screens/Main/Room";
+import { BlurView } from "expo-blur";
+import { StyleSheet } from "react-native";
 
 const TabsNavigator = createBottomTabNavigator();
 
@@ -17,9 +20,12 @@ const Tabs = () => (
     tabBarOptions={{
       activeTintColor: colors.red,
       tabStyle: {
-        paddingTop: 5,
+        paddingTop: 10,
       },
-      labelStyle: { fontWeight: "600" },
+      labelStyle: {
+        textTransform: "uppercase",
+        fontWeight: "600",
+      },
     }}
     screenOptions={({ route }) => ({
       tabBarIcon: ({ focused }) => {
@@ -44,7 +50,7 @@ const Tabs = () => (
       },
     })}
   >
-    <TabsNavigator.Screen name="검색" component={Expolore} />
+    <TabsNavigator.Screen name="검색" component={Explore} />
     <TabsNavigator.Screen name="관심목록" component={Saved} />
     <TabsNavigator.Screen name="지도" component={MapScreen} />
     <TabsNavigator.Screen name="프로필" component={Profile} />
@@ -52,14 +58,21 @@ const Tabs = () => (
 );
 
 const MainNavigator = createStackNavigator();
-
 export default () => (
-  <MainNavigator.Navigator screenOptions={{ headerBackTitleVisible: false }}>
+  <MainNavigator.Navigator
+    screenOptions={{
+      headerBackTitleVisible: false,
+      headerBackImage: () => <BackBtn />,
+    }}
+  >
     <MainNavigator.Screen
       name="Tabs"
       component={Tabs}
       options={{ headerShown: false }}
-    />
-    <MainNavigator.Screen name="객실보기" component={Room} />
+    ></MainNavigator.Screen>
+    <MainNavigator.Screen
+      name="객실보기"
+      component={Room}
+    ></MainNavigator.Screen>
   </MainNavigator.Navigator>
 );

@@ -1,8 +1,6 @@
 import React from "react";
-import { ActivityIndicator, ScrollView, Text } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { ActivityIndicator, ScrollView, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
-import Btn from "../../../components/Auth/Btn";
 import RoomCard from "../../../components/RoomCard";
 
 const Container = styled.View`
@@ -65,6 +63,7 @@ export default ({ rooms, increasePage }) => {
                 photos={room.photos}
                 name={room.name}
                 price={room.price}
+                roomObj={room}
               />
             ))}
             <TouchableOpacity onPress={increasePage}>
