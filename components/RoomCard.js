@@ -1,15 +1,22 @@
 import React from "react";
 import Pt from "prop-types";
 import styled from "styled-components/native";
+<<<<<<< HEAD
 import { Dimensions, TouchableOpacity } from "react-native";
+=======
+import { TouchableOpacity } from "react-native";
+>>>>>>> b0275f37ef21505cfc0b3bf4028a221b6feb9351
 import { Ionicons } from "@expo/vector-icons";
 import utils from "../utils";
 import { useDispatch } from "react-redux";
 import { toggleFav } from "../redux/usersSlice";
 import { useNavigation } from "@react-navigation/native";
 import RoomPhotos from "./RoomPhotos";
+<<<<<<< HEAD
 
 const { width, height } = Dimensions.get("screen");
+=======
+>>>>>>> b0275f37ef21505cfc0b3bf4028a221b6feb9351
 
 const Container = styled.View`
   width: 100%;
@@ -40,18 +47,6 @@ const PriceNumber = styled.Text`
 `;
 const PriceText = styled.Text`
   font-size: 16px;
-`;
-
-const PhotosContainer = styled.View`
-  margin-bottom: 10px;
-  width: 100%;
-  overflow: hidden;
-  height: ${height / 4}px;
-`;
-
-const SlideImage = styled.Image`
-  width: 100%;
-  height: 100%;
 `;
 
 const Favbutton1 = styled.View`
@@ -120,7 +115,11 @@ const RoomCard = ({ id, isFav, isSuperHost, photos, name, price, roomObj }) => {
       <RoomPhotos photos={photos} />
       <TouchableOpacity
         style={{ alignItems: "flex-start" }}
+<<<<<<< HEAD
         onPress={() => navigation.navigate("Room", { ...roomObj })}
+=======
+        onPress={() => navigation.navigate("객실보기", { ...roomObj })}
+>>>>>>> b0275f37ef21505cfc0b3bf4028a221b6feb9351
       >
         {isSuperHost ? (
           <SuperhostContainer>

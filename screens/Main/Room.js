@@ -63,12 +63,21 @@ function formatTime(time) {
     return `오전 ${hours}시`;
   }
 }
+<<<<<<< HEAD
 
 export default ({ route: { params }, navigation }) => {
   useEffect(() => {
     navigation.setOptions({ title: params.name });
   }, []);
 
+=======
+
+export default ({ route: { params }, navigation }) => {
+  useEffect(() => {
+    navigation.setOptions({ title: params.name });
+  }, []);
+  console.log(params);
+>>>>>>> b0275f37ef21505cfc0b3bf4028a221b6feb9351
   return (
     <Container>
       <RoomPhotos photos={params.photos} factor={2} />
