@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
 import DismissKeyboard from "../../../components/DismissKeyboard";
-import { useNavigation } from "@react-navigation/native";
-import { TextInput } from "react-native";
+import { ActivityIndicator } from "react-native";
+import colors from "../../../colors";
+import RoomCard from "../../../components/RoomCard";
 
 const Container = styled.View``;
 
@@ -55,10 +56,46 @@ const Filter = styled.TextInput`
   width: 70px;
 `;
 
-export default () => {
-  const navigation = useNavigation();
-  return (
-    <DismissKeyboard>
+const SearchBtn = styled.TouchableOpacity`
+  background-color: ${colors.red};
+  padding: 10px;
+  margin: 10px 30px;
+  border-radius: 10px;
+  align-items: center;
+`;
+
+const SearchText = styled.Text`
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+`;
+
+const ResultsText = styled.Text`
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+`;
+
+const Results = styled.ScrollView`
+  margin-top: 25px;
+`;
+
+export default ({
+  navigation,
+  searching,
+  beds,
+  bedrooms,
+  bathrooms,
+  maxPrice,
+  results,
+  triggerSearch,
+  setBeds,
+  setBedrooms,
+  setBathrooms,
+  setMaxPrice,
+}) => (
+  <DismissKeyboard>
+    <>
       <Container>
         <SearchContainer>
           <SearchBar autoFocus={true} placeholder="도시 이름으로 찾기" />
@@ -69,26 +106,73 @@ export default () => {
         <FiltersContainer
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingVertical: 10, paddingHorizontal: 20 }}
+          contentContainerStyle={{
+            paddingVertical: 10,
+            paddingHorizontal: 20,
+          }}
         >
           <FilterContainer>
             <FilterLabel>침대갯수</FilterLabel>
-            <Filter placeholder="0" keyboardType={"number-pad"} />
+            <Filter
+              onChangeText={(text) => setBeds(text)}
+              value={beds}
+              placeholder="0"
+              keyboardType={"number-pad"}
+            />
           </FilterContainer>
           <FilterContainer>
             <FilterLabel>침실갯수</FilterLabel>
-            <Filter placeholder="0" keyboardType={"number-pad"} />
+            <Filter
+              onChangeText={(text) => setBedrooms(text)}
+              value={bedrooms}
+              placeholder="0"
+              keyboardType={"number-pad"}
+            />
           </FilterContainer>
           <FilterContainer>
             <FilterLabel>욕실갯수</FilterLabel>
-            <Filter placeholder="0" keyboardType={"number-pad"} />
+            <Filter
+              onChangeText={(text) => setBathrooms(text)}
+              value={bathrooms}
+              placeholder="0"
+              keyboardType={"number-pad"}
+            />
           </FilterContainer>
           <FilterContainer>
             <FilterLabel>최고가</FilterLabel>
-            <Filter placeholder="$0" keyboardType={"number-pad"} />
+            <Filter
+              onChangeText={(text) => setMaxPrice(text)}
+              value={maxPrice}
+              placeholder="$0"
+              keyboardType={"number-pad"}
+            />
           </FilterContainer>
         </FiltersContainer>
       </Container>
-    </DismissKeyboard>
-  );
-};
+      <SearchBtn onPress={searching ? null : triggerSearch}>
+        {searching ? (
+          <ActivityIndicator color="white" />
+        ) : (
+          <SearchText>검색</SearchText>
+        )}
+      </SearchBtn>
+      {results ? (
+        <ResultsText> {results.count}개의 결과를 찾았습니다</ResultsText>
+      ) : null}
+      <Results contentContainerStyle={{ padding: 15 }}>
+        {results?.results?.map((room) => (
+          <RoomCard
+            key={room.id}
+            name={room.name}
+            price={room.price}
+            photos={room.photos}
+            id={room.id}
+            isFav={room.is_fav}
+            isSuperHost={room.user.superhost}
+            roomObj={room}
+          />
+        ))}
+      </Results>
+    </>
+  </DismissKeyboard>
+);
