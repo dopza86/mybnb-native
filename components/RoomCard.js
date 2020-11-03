@@ -120,7 +120,7 @@ const RoomCard = ({ id, isFav, isSuperHost, photos, name, price, roomObj }) => {
       <RoomPhotos photos={photos} />
       <TouchableOpacity
         style={{ alignItems: "flex-start" }}
-        onPress={() => navigation.navigate("객실보기", { ...roomObj })}
+        onPress={() => navigation.navigate("Room", { ...roomObj })}
       >
         {isSuperHost ? (
           <SuperhostContainer>

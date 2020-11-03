@@ -10,6 +10,7 @@ import colors from "../colors";
 import utils from "../utils";
 import BackBtn from "../components/Auth/BackBtn";
 import Room from "../screens/Main/Room";
+import Search from "../screens/Main/Search";
 import { BlurView } from "expo-blur";
 import { StyleSheet } from "react-native";
 
@@ -69,10 +70,12 @@ export default () => (
       name="Tabs"
       component={Tabs}
       options={{ headerShown: false }}
-    ></MainNavigator.Screen>
+    />
+    <MainNavigator.Screen name="Room" component={Room} />
     <MainNavigator.Screen
-      name="객실보기"
-      component={Room}
-    ></MainNavigator.Screen>
+      name="Search"
+      options={{ headerShown: false }}
+      component={Search}
+    />
   </MainNavigator.Navigator>
 );

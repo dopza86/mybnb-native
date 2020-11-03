@@ -1,5 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { ActivityIndicator, ScrollView, TouchableOpacity } from "react-native";
+import {
+  ActivityIndicator,
+  ScrollView,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import styled from "styled-components/native";
 import RoomCard from "../../../components/RoomCard";
 
@@ -41,15 +47,20 @@ const LoadMoreText = styled.Text`
 `;
 
 export default ({ rooms, increasePage }) => {
+  const navigation = useNavigation();
   return (
     <Container>
       {rooms.length === 0 ? (
         <ActivityIndicator color="black" />
       ) : (
         <>
-          <FakeBar>
-            <FakeText> 검색 </FakeText>
-          </FakeBar>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate("Search")}
+          >
+            <FakeBar>
+              <FakeText> 검색 </FakeText>
+            </FakeBar>
+          </TouchableWithoutFeedback>
           <ScrollView
             style={{ width: "100%" }}
             contentContainerStyle={{ paddingTop: 30 }}
