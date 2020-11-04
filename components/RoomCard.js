@@ -42,18 +42,6 @@ const PriceText = styled.Text`
   font-size: 16px;
 `;
 
-const PhotosContainer = styled.View`
-  margin-bottom: 10px;
-  width: 100%;
-  overflow: hidden;
-  height: ${height / 4}px;
-`;
-
-const SlideImage = styled.Image`
-  width: 100%;
-  height: 100%;
-`;
-
 const Favbutton1 = styled.View`
   width: 50px;
   height: 50px;
