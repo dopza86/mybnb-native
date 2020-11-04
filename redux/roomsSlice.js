@@ -34,9 +34,11 @@ const roomsSlice = createSlice({
         if (room.is_fav) {
           room.is_fav = false;
           state.favs = state.favs.filter((room) => room.id !== roomId);
+          alert("관심목록에서 제거 되었습니다");
         } else {
           room.is_fav = true;
           state.favs = [room, ...state.favs];
+          alert("관심목록에 추가 되었습니다");
         }
       }
     },

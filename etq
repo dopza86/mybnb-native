@@ -1,0 +1,140 @@
+[33mcommit 3fc9050f459cc70d8ddaaf18bc6422f09a33596f[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Tue Nov 3 19:39:14 2020 +0900
+
+     Search Screen part One
+
+[33mcommit b8703ea720b7321ad6d5a8021a445b1280cfe5c4[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Mon Nov 2 10:38:12 2020 +0900
+
+    지도
+
+[33mcommit 4b8677109312845cbf8c0d5c275e77b21f134116[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Sun Nov 1 17:25:29 2020 +0900
+
+    Room Detail part One
+
+[33mcommit e55668b01dc3e3f5665036c825a4d9bf6c51013d[m
+Merge: 4f3ba5f f582a6f
+Author: dopza86 <dopza86@gmail.com>
+Date:   Fri Oct 30 23:14:41 2020 +0900
+
+    관심목록 완료
+
+[33mcommit 4f3ba5f5cf04c2987d6e0e604f4433c14a651869[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Fri Oct 30 23:12:20 2020 +0900
+
+    관심목록 완료
+
+[33mcommit f582a6f92234131ad6f0ec0c42c945ef89f4fe1e[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Fri Oct 30 05:36:13 2020 +0900
+
+    savedScreenDone
+
+[33mcommit 54c7fd901361cfc07ab2339ffd0e936609d6ee08[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Fri Oct 30 02:46:57 2020 +0900
+
+    Saved Screen part One
+
+[33mcommit a5b7fce8a2c91d34a6cc4f0ba42183ac907c21b8[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Thu Oct 29 22:51:01 2020 +0900
+
+    Toggle Favs part One
+
+[33mcommit 89185b6ddc538a444e1f9cf15bcd8d2e2022fc4b[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Thu Oct 29 00:13:38 2020 +0900
+
+    LoadMore완료
+
+[33mcommit 1a4b7b42c592eca0089670a29ca0e3374bae9739[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Tue Oct 27 00:36:25 2020 +0900
+
+    FakeSearchBar
+
+[33mcommit 48abe5d6f818bc95764ad99c5e095d50a17ddd06[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Sun Oct 25 22:38:54 2020 +0900
+
+    photoSlide
+
+[33mcommit d9856d15550dbbce616007fb62bf724683248ea5[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Sun Oct 25 21:35:01 2020 +0900
+
+    1025 2135 swiper 안깔림
+
+[33mcommit c23209cd4957c3b2cf650e59b1324f30334eedb0[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Sat Oct 24 20:12:51 2020 +0900
+
+    1024 user complete
+
+[33mcommit 8398914a1cbc15aa059f16103d80bd964bcf4fce[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Fri Oct 23 00:41:33 2020 +0900
+
+    error fix
+
+[33mcommit 5f4697fe202d4c553b93687217519c6572f1fbda[m
+Merge: 9bbed07 d04645a
+Author: dopza86 <dopza86@gmail.com>
+Date:   Thu Oct 22 21:12:07 2020 +0900
+
+    Merge branch 'main' of https://github.com/dopza86/mybnb-native into main
+
+[33mcommit 9bbed074d9953e976f8730667079f9e7702c4caa[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Thu Oct 22 21:11:41 2020 +0900
+
+    1022 2111 디버거 안열림
+
+[33mcommit d04645a5c4f0151f92b88d4d2a385f27d1722d9f[m
+Merge: 305b9d3 f6941b3
+Author: dopza86 <dopza86@gmail.com>
+Date:   Thu Oct 22 00:41:30 2020 +0900
+
+    MainScreen
+
+[33mcommit 305b9d3fff4e42240c9fa86f9ff77201a210f285[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Thu Oct 22 00:35:15 2020 +0900
+
+    MainScreen
+
+[33mcommit f6941b3025c6d0b32ba257e17f86e59c386e8873[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Sun Oct 18 20:21:52 2020 +0900
+
+    createAccount Done
+
+[33mcommit ce1c668eba8fc8edfec90e8f947361315aa44a77[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Thu Oct 15 18:29:17 2020 +0900
+
+    SignIn
+
+[33mcommit 19cc32194da7b766747031b7c408e7177fd00c58[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Wed Oct 14 19:12:03 2020 +0900
+
+    welcomeScreen
+
+[33mcommit 4c068375f3579acc7ae1bd0f8f9ba9b63110bf3a[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Wed Oct 14 13:52:25 2020 +0900
+
+    auth navigation
+
+[33mcommit 91e04de601214b3de0e6340c0baa9d20a97ff960[m
+Author: dopza86 <dopza86@gmail.com>
+Date:   Thu Oct 8 13:52:36 2020 +0900
+
+    Created a new Expo app
