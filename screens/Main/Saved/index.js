@@ -3,7 +3,7 @@ import { getFavs } from "../../../redux/usersSlice";
 import SavedContainer from "./SavedContainer";
 
 function mapStateToProps(state) {
-  return { rooms: state.roomsReducer.favs };
+  return { rooms: state.roomsReducer.favs.results };
 }
 
 function mapDispatchToProps(dispatch) {
