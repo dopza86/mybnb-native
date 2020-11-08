@@ -7,6 +7,7 @@ const userSlice = createSlice({
   initialState: {
     isLoggedIn: false,
     token: null,
+    user: [],
   },
   reducers: {
     logIn(state, action) {
@@ -18,10 +19,13 @@ const userSlice = createSlice({
       state.isLoggedIn = false;
       state.token = null;
     },
+    me(state, action) {
+      state.user = action.payload.user;
+    },
   },
 });
 
-export const { logIn, logOut } = userSlice.actions;
+export const { logIn, logOut, me } = userSlice.actions;
 export const userLogin = (form) => async (dispatch) => {
   try {
     const {
@@ -32,6 +36,18 @@ export const userLogin = (form) => async (dispatch) => {
     }
   } catch (e) {
     alert("가입된 회원이 아닙니다");
+  }
+};
+
+export const getMe = () => async (dispatch, getState) => {
+  const {
+    usersReducer: { id },
+  } = getState();
+  try {
+    const { data } = await api.isMe(id);
+    dispatch(me({ user: data }));
+  } catch (e) {
+    console.warn(e);
   }
 };
 
