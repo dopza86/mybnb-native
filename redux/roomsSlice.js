@@ -22,8 +22,19 @@ const roomsSlice = createSlice({
     increasePage(state, action) {
       state.explore.page += 1;
     },
+
     setFavs(state, action) {
-      state.favs = action.payload;
+      console.log(action.payload.favsPage);
+      if (action.payload.favsPage === 1) {
+        state.favs = action.payload.favs.results;
+        state.favsPage = 1;
+      } else {
+        state.favs = [...state.favs, ...action.payload.favs.results];
+      }
+    },
+
+    increaseFavsPage(state, action) {
+      state.favsPage += 1;
     },
     setFav(state, action) {
       const {
@@ -50,6 +61,7 @@ export const {
   increasePage,
   setFavs,
   setFav,
+  increaseFavsPage,
 } = roomsSlice.actions;
 
 export const getRooms = (page) => async (dispatch, getState) => {

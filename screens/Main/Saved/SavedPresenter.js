@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import RoomCard from "../../../components/RoomCard";
 
@@ -23,7 +23,22 @@ const Title = styled.Text`
 
 const NoFavs = styled.Text``;
 
-export default ({ rooms }) => (
+const LoadMore = styled.View`
+  width: 100%;
+  padding: 10px 10px;
+  align-items: center;
+  background-color: #006a70;
+  border-radius: 5px;
+  margin-bottom: 30px;
+`;
+
+const LoadMoreText = styled.Text`
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+`;
+
+export default ({ rooms, increaseFavsPage }) => (
   <>
     {rooms ? (
       <Container>
@@ -48,6 +63,11 @@ export default ({ rooms }) => (
           ) : (
             <NoFavs>관심목록이 없습니다</NoFavs>
           )}
+          <TouchableOpacity onPress={increaseFavsPage}>
+            <LoadMore>
+              <LoadMoreText>더보기</LoadMoreText>
+            </LoadMore>
+          </TouchableOpacity>
         </SV>
       </Container>
     ) : (

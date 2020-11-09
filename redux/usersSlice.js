@@ -8,6 +8,7 @@ const userSlice = createSlice({
     isLoggedIn: false,
     token: null,
     user: [],
+    favsPage: 1,
   },
   reducers: {
     logIn(state, action) {
@@ -51,14 +52,15 @@ export const getMe = () => async (dispatch, getState) => {
   }
 };
 
-export const getFavs = () => async (dispatch, getState) => {
+export const getFavs = (favsPage) => async (dispatch, getState) => {
   const {
     usersReducer: { id, token },
   } = getState();
 
   try {
-    const { data } = await api.favs(id, token);
-    dispatch(setFavs(data));
+    const { data } = await api.favs(id, token, favsPage);
+
+    dispatch(setFavs({ favs: data, favsPage: favsPage }));
   } catch (e) {
     console.warn(e);
   }
