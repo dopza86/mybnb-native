@@ -5,7 +5,7 @@ const callApi = async (method, path, data, jwt, params = {}) => {
     Authorization: `Bearer ${jwt}`,
     "Content-Type": "application/json",
   };
-  const baseUrl = "http://bcbd5aebb756.ngrok.io/api/v1";
+  const baseUrl = "http://b23e27350aa2.ngrok.io/api/v1";
   const fullUrl = `${baseUrl}${path}`;
   if (method === "get" || method === "delete") {
     return axios[method](fullUrl, { headers, params });
@@ -24,5 +24,6 @@ export default {
   toggleFavs: (userId, roomId, token) =>
     callApi("put", `/users/${userId}/favs/`, { pk: roomId }, token),
   search: (form, token) => callApi("get", "/rooms/search/", null, token, form),
+  searchMap: (form) => callApi("get", "/rooms/search/", null, null, form),
   isMe: (id) => callApi("get", `/users/${id}`, id),
 };

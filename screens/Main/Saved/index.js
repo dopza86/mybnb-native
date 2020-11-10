@@ -5,7 +5,7 @@ import { increaseFavsPage } from "../../../redux/roomsSlice";
 import SavedContainer from "./SavedContainer";
 
 function mapStateToProps(state) {
-  console.log(state.usersReducer.favsPage);
+  state.roomsReducer.favs;
   return {
     rooms: state.roomsReducer.favs,
     favsPage: state.roomsReducer.favsPage,

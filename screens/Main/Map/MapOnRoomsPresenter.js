@@ -107,7 +107,7 @@ const LoadMoreText = styled.Text`
 `;
 
 export default ({
-  rooms,
+  roomsOnMap,
   mapRef,
   currentIndex,
   onScroll,
@@ -130,7 +130,7 @@ export default ({
         zoom: 10,
       }}
     >
-      {rooms?.map((room, index) => (
+      {roomsOnMap?.map((room, index) => (
         <Marker
           key={room.id}
           coordinate={{
@@ -157,7 +157,7 @@ export default ({
       pagingEnabled
       horizontal
     >
-      {rooms?.map((room) => (
+      {roomsOnMap?.map((room) => (
         <RoomContainer key={room.id}>
           <RoomCard>
             <RoomPhoto
